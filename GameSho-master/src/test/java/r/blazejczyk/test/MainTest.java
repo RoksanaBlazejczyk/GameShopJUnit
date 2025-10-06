@@ -34,7 +34,7 @@ class MainTest {
         inventory.addGame(zelda);
     }
 
-    // -----------------------------
+    // ------------------------
 // MANAGER TESTS
 // -----------------------------
     @Test
