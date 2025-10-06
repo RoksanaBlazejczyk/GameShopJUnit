@@ -44,9 +44,9 @@ public class Customer {
         if (added) {
             discountEligible = true;
             transactionHistory.add("TradeIn: " + game.getName());
-            System.out.println("\n"+name + " traded in " + game.getName());
+
         } else {
-            System.out.println("\n"+name + " cannot trade in " + game.getName() + ": inventory full (10 max).");
+            //System.out.println("\n"+name + " cannot trade in " + game.getName() + ": inventory full (10 max).");
         }
     }
 
