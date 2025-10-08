@@ -2,70 +2,57 @@ package r.blazejczyk.main;
 
 import r.blazejczyk.game.*;
 import r.blazejczyk.customer.*;
+import r.blazejczyk.userInterface.UserInterface;
+
+
 import java.util.Date;
 
 public class Main {
-    /**
-     *
-     * @param args
-     */
     public static void main(String[] args) {
+        UserInterface.run();
+
         Inventory inventory = new Inventory();
         Manager manager = new Manager("Sylvie");
 
-        // Use your SaveToFile class (not FileHandler!)
+        // Initialize report file
         SaveToFile.writeToFile("inventory_report.txt", "Inventory Report\n====================\n");
         SaveToFile.appendToFile("inventory_report.txt", "Initial Inventory Created.\n");
 
-        if (SaveToFile.fileExists("inventory_report.txt")) {
-            System.out.println(" File successfully created!");
-        }
-
-        //Create games
+        // Create games
         Type mario = new Type("Mario", 50.00, ConsoleType.NINTENDO, 2020, 101, 1, 7);
         Type lemmings = new Type("Lemmings", 40.00, ComputerType.AMIGA, 1991, 102, 2, 3);
         Type zelda = new Type("Zelda", 70.00, ConsoleType.NINTENDO, 2021, 103, 3, 2);
 
-        //Add games to inventory
+        // Add games to inventory
         inventory.addGame(mario);
         inventory.addGame(lemmings);
         inventory.addGame(zelda);
 
-        //Display inventory before actions
-        System.out.println("\n==================== Inventory before transactions ====================");
-        manager.displayInventory(inventory);
+        // Manager buys a game
+        manager.buyGame(inventory, mario, 2);
 
-        //Manager buys a game
-        boolean bought = manager.buyGame(inventory, mario, 2);
-        System.out.println("Manager " + manager.getName() + (bought
-                ? " successfully bought " + mario.getName()
-                : " could not buy " + mario.getName() + " (inventory full or invalid quantity)."));
-
-        //Customer actions
+        // Customer trades and purchases
         Customer customer = new Customer(1, "Robert", "123 Street");
 
         TradeIn trade = new TradeIn(1, new Date());
         customer.makeTransaction(trade, inventory, mario);
-        System.out.println(customer.getName() + " traded in " + mario.getName());
-
+        // Example: when a customer purchases a game, use createDecimals()
+        Discount discount = new Discount(10); // 10% discount
         Purchase purchase = new Purchase(2, new Date(), false);
         customer.makeTransaction(purchase, inventory, zelda);
-        System.out.println(customer.getName() + " purchased " + zelda.getName());
 
-        //Final inventory
-        System.out.println("\n==================== Inventory after transactions ====================");
-        manager.displayInventory(inventory);
+        // Use createDecimals() to get a formatted string with two decimals:
+        String discountedPrice = discount.createDecimals(zelda.getPrice());
+        System.out.println(customer.getName() + " purchased " + zelda.getName()
+                + " for " + discountedPrice + " (Qty: " + zelda.getQuantity() + ")");
 
-
-        // Save final inventory to file
+        // When writing final inventory to file, format each price:
         SaveToFile.appendToFile("inventory_report.txt", "\nFinal Inventory:\n");
         for (Game game : inventory.getGames()) {
-            SaveToFile.appendToFile("inventory_report.txt",
-                    game.getName() + " - Quantity: " + game.getQuantity());
+            // Prefer using a helper on the Game/Type class (see next block)
+            String line = game.getName() + " - Quantity: " + game.getQuantity()
+                    + " | Price: " + game.getFormattedPrice(); //use formatted price
+            SaveToFile.appendToFile("inventory_report.txt", line + "\n");
         }
-
-        System.out.println("\nInventory report saved to 'inventory_report.txt'.");
     }
-    }
-
-
+}

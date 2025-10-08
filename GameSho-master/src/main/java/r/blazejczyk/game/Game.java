@@ -51,6 +51,9 @@ public abstract class Game {
             return true;
         }
     }
+    public String getFormattedPrice() {
+        return String.format("£%.2f", this.price);
+    }
 
     public void setPrice(double price) {
         if (price >= 0) this.price = price;

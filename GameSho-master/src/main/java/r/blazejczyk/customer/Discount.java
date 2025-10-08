@@ -13,11 +13,17 @@ public class Discount {
         if (!isApplied) {
             isApplied = true;
             double discounted = amount - (amount * percentage / 100);
-            return Math.round(discounted * 100.0) / 100.0; // 2 decimals
+            return discounted;
         }
-        return Math.round(amount * 100.0) / 100.0;
+        return amount;
     }
 
     public boolean isApplied() { return isApplied; }
     public void markAsUsed(boolean used) { this.isApplied = used; }
+
+    //Always return formatted string with 2 decimals
+    public String createDecimals(double amount) {
+        double discounted = applyDiscount(amount);
+        return String.format("£%.2f", discounted); // always shows two decimals
+    }
 }
