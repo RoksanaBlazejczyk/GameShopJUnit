@@ -2,6 +2,8 @@ package r.blazejczyk.customer;
 
 import java.util.Date;
 
+
+
 public abstract class Transaction {
     protected int transactionID;
     protected String type;

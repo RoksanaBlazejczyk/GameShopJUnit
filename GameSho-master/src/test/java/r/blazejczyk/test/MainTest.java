@@ -121,7 +121,7 @@ class MainTest {
     void testInventoryQuantityLimit() {
         Type newMario = new Type("Mario", 50.00, ConsoleType.NINTENDO, 2020, 101, 1, 5);
         boolean added = inventory.addGame(newMario);
-        assertFalse(added, "Adding 5 more Mario should exceed limit (7 + 5 > 10)");
+        assertFalse(added, "Adding 5 more Mario exceed limit (7 + 5 > 10)");
     }
 
     @Test

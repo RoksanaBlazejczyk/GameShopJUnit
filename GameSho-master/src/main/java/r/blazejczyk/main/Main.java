@@ -5,9 +5,21 @@ import r.blazejczyk.customer.*;
 import java.util.Date;
 
 public class Main {
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         Inventory inventory = new Inventory();
         Manager manager = new Manager("Sylvie");
+
+        // Use your SaveToFile class (not FileHandler!)
+        SaveToFile.writeToFile("inventory_report.txt", "Inventory Report\n====================\n");
+        SaveToFile.appendToFile("inventory_report.txt", "Initial Inventory Created.\n");
+
+        if (SaveToFile.fileExists("inventory_report.txt")) {
+            System.out.println(" File successfully created!");
+        }
 
         //Create games
         Type mario = new Type("Mario", 50.00, ConsoleType.NINTENDO, 2020, 101, 1, 7);
@@ -43,5 +55,17 @@ public class Main {
         //Final inventory
         System.out.println("\n==================== Inventory after transactions ====================");
         manager.displayInventory(inventory);
+
+
+        // Save final inventory to file
+        SaveToFile.appendToFile("inventory_report.txt", "\nFinal Inventory:\n");
+        for (Game game : inventory.getGames()) {
+            SaveToFile.appendToFile("inventory_report.txt",
+                    game.getName() + " - Quantity: " + game.getQuantity());
+        }
+
+        System.out.println("\nInventory report saved to 'inventory_report.txt'.");
     }
-}
+    }
+
+

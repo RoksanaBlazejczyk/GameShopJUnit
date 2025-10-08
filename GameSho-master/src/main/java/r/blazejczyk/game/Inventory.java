@@ -2,6 +2,7 @@ package r.blazejczyk.game;
 
 import java.util.ArrayList;
 
+
 public class Inventory {
     private ArrayList<Game> games;
 
@@ -49,6 +50,7 @@ public class Inventory {
         return false;
     }
 
+
     public void listAllGames() {
         System.out.println("Inventory:");
         if (games.isEmpty()) {
@@ -60,6 +62,10 @@ public class Inventory {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Game> getGames() {
         return games;
     }
