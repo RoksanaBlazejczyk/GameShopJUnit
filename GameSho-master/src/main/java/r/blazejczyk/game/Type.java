@@ -3,9 +3,6 @@ package r.blazejczyk.game;
 public class Type extends Game {
     private Enum<?> type;
 
-    //ConsoleType or ComputerType
-// Constructor with price
-
     /**
      *
      * @param name

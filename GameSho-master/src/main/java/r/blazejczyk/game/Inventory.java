@@ -10,6 +10,10 @@ public class Inventory {
         games = new ArrayList<>();
     }
 
+    /**
+     *      * @param newGame
+     * @return
+     */
     public boolean addGame(Game newGame) {
         for (Game g : games) {
             if (g.getName().equals(newGame.getName()) && g.getConsole().equals(newGame.getConsole())) {
@@ -33,6 +37,12 @@ public class Inventory {
         return true;
     }
 
+    /**
+     *
+     * @param game
+     * @param qty
+     * @return
+     */
     public boolean removeGame(Game game, int qty) {
         for (Game g : games) {
             if (g.getName().equals(game.getName()) && g.getConsole().equals(game.getConsole())) {
@@ -49,7 +59,6 @@ public class Inventory {
         System.out.println("Game not found: " + game.getName());
         return false;
     }
-
 
     public void listAllGames() {
         System.out.println("Inventory:");

@@ -21,6 +21,13 @@ public class Manager {
         }
     }
 
+    /**
+     *
+     * @param inventory
+     * @param newGame
+     * @param quantity
+     * @return
+     */
     //Manager buys a game for the shop
     public boolean buyGame(Inventory inventory, Game newGame, int quantity) {
         if (quantity <= 0) {

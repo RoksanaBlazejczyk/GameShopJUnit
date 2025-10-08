@@ -8,6 +8,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class UserInterface {
+
+
     public static void run() {
         Scanner scanner = new Scanner(System.in);
 
@@ -107,6 +109,12 @@ public class UserInterface {
         scanner.close();
     }
 
+    /**
+     *
+     * @param inventory
+     * @param name
+     * @return
+     */
     private static Type findGameByName(Inventory inventory, String name) {
         for (Game game : inventory.getGames()) {
             if (game.getName().equalsIgnoreCase(name) && game instanceof Type) {

@@ -12,9 +12,10 @@ public class Main {
         UserInterface.run();
 
         Inventory inventory = new Inventory();
+
         Manager manager = new Manager("Sylvie");
 
-        // Initialize report file
+        //Initialize file
         SaveToFile.writeToFile("inventory_report.txt", "Inventory Report\n====================\n");
         SaveToFile.appendToFile("inventory_report.txt", "Initial Inventory Created.\n");
 
@@ -28,28 +29,28 @@ public class Main {
         inventory.addGame(lemmings);
         inventory.addGame(zelda);
 
-        // Manager buys a game
+        //Manager buys a game
         manager.buyGame(inventory, mario, 2);
 
-        // Customer trades and purchases
+        //Customer trades and purchases
         Customer customer = new Customer(1, "Robert", "123 Street");
 
         TradeIn trade = new TradeIn(1, new Date());
         customer.makeTransaction(trade, inventory, mario);
-        // Example: when a customer purchases a game, use createDecimals()
+        //when a customer purchases a game, use createDecimals()
         Discount discount = new Discount(10); // 10% discount
         Purchase purchase = new Purchase(2, new Date(), false);
         customer.makeTransaction(purchase, inventory, zelda);
 
-        // Use createDecimals() to get a formatted string with two decimals:
+        //Use createDecimals() to get a formatted string with two decimals:
         String discountedPrice = discount.createDecimals(zelda.getPrice());
         System.out.println(customer.getName() + " purchased " + zelda.getName()
                 + " for " + discountedPrice + " (Qty: " + zelda.getQuantity() + ")");
 
-        // When writing final inventory to file, format each price:
+        //When writing final inventory to file, format each price:
         SaveToFile.appendToFile("inventory_report.txt", "\nFinal Inventory:\n");
         for (Game game : inventory.getGames()) {
-            // Prefer using a helper on the Game/Type class (see next block)
+
             String line = game.getName() + " - Quantity: " + game.getQuantity()
                     + " | Price: " + game.getFormattedPrice(); //use formatted price
             SaveToFile.appendToFile("inventory_report.txt", line + "\n");

@@ -9,6 +9,16 @@ public abstract class Game {
     private int quantity;
     private String console; // store console or computer type as string
 
+    /**
+     *
+     * @param name
+     * @param price
+     * @param console
+     * @param yearOfRelease
+     * @param gameID
+     * @param stockID
+     * @param quantity
+     */
     public Game(String name, double price, String console, int yearOfRelease, int gameID, int stockID, int quantity) {
         this.name = name;
         this.price = price;
@@ -19,6 +29,10 @@ public abstract class Game {
         this.quantity = quantity;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
