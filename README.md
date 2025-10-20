@@ -1,3 +1,6 @@
+<img width="1400" height="733" alt="image" src="https://github.com/user-attachments/assets/84f6574b-de42-4245-8689-64cfe9400608" />
+
+
 Retro Game Shop Management System
 A Java-based console application for managing a retro video game shop, including features for inventory management, customer transactions, trade-ins, discounts, and file saving/reporting.
 Overview
