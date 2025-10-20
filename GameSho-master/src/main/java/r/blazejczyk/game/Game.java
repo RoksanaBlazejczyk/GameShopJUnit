@@ -53,6 +53,11 @@ public abstract class Game {
         return yearOfRelease;
     }
 
+    /**
+     *
+     * @param quantity
+     * @return
+     */
     public boolean setQuantity(int quantity) {
         if (quantity < 0) {
             System.out.println("Quantity cannot be negative.");

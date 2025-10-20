@@ -21,6 +21,13 @@ public class Customer {
         this.discountEligible = false;
         this.transactionHistory = new ArrayList<>();
     }
+
+    /**
+     *
+     * @param transaction
+     * @param inventory
+     * @param game
+     */
     public void makeTransaction(Transaction transaction, Inventory inventory, Type game) {
         if (transaction instanceof TradeIn) {
             tradeIn(game, inventory);
@@ -31,11 +38,17 @@ public class Customer {
         }
     }
 
-    // Trade-in 1 copy of a game
+    /**
+     *
+     * @param game
+     * @param inventory
+     * Trade-in 1 copy of a game
+     * Attempt to add 1 to inventory
+     */
+
     public void tradeIn(Game game, Inventory inventory) {
         if (game == null) return;
 
-        // Attempt to add 1 to inventory
         Game copy = new Type(((Type) game).getName(), game.getPrice(),
                 ((Type) game).getType(), game.getYearOfRelease(),
                 0, 0, 1);
@@ -50,7 +63,13 @@ public class Customer {
         }
     }
 
-    // Purchase 1 copy
+    /**
+     *
+     * @param game
+     * @param inventory
+     * //Purchase 1 copy
+     */
+
     public void purchase(Game game, Inventory inventory) {
         if (game.getQuantity() <= 0) {
             System.out.println("Sorry, " + game.getName() + " is out of stock.");
@@ -73,7 +92,7 @@ public class Customer {
         transactionHistory.add(record);
     }
 
-    // Getters
+    //Getters
     public int getCustomerID() { return customerID; }
     public String getName() { return name; }
     public boolean isDiscountEligible() { return discountEligible; }

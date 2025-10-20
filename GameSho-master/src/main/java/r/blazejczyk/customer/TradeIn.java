@@ -6,6 +6,11 @@ import java.util.Date;
 public class TradeIn extends Transaction {
     private ArrayList<Transaction> relatedTransactions;
 
+    /**
+     *
+     * @param transactionID
+     * @param date
+     */
     public TradeIn(int transactionID, Date date) {
         super(transactionID, "TradeIn", date);
         relatedTransactions = new ArrayList<>();

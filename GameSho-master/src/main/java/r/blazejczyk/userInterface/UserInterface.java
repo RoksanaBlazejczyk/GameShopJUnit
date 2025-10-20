@@ -9,16 +9,15 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-
     public static void run() {
         Scanner scanner = new Scanner(System.in);
 
-        // Core objects
+        //Core objects
         Inventory inventory = new Inventory();
         Manager manager = new Manager("Sylvie");
         Customer customer = new Customer(1, "Robert", "123 Street");
 
-        // Sample games
+        //Sample games
         Type mario = new Type("Mario", 50.00, ConsoleType.NINTENDO, 2020, 101, 1, 5);
         Type lemmings = new Type("Lemmings", 40.00, ComputerType.AMIGA, 1991, 102, 2, 3);
         Type zelda = new Type("Zelda", 70.00, ConsoleType.NINTENDO, 2021, 103, 3, 2);

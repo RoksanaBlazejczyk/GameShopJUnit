@@ -19,12 +19,12 @@ public class Main {
         SaveToFile.writeToFile("inventory_report.txt", "Inventory Report\n====================\n");
         SaveToFile.appendToFile("inventory_report.txt", "Initial Inventory Created.\n");
 
-        // Create games
+        //Create games
         Type mario = new Type("Mario", 50.00, ConsoleType.NINTENDO, 2020, 101, 1, 7);
         Type lemmings = new Type("Lemmings", 40.00, ComputerType.AMIGA, 1991, 102, 2, 3);
         Type zelda = new Type("Zelda", 70.00, ConsoleType.NINTENDO, 2021, 103, 3, 2);
 
-        // Add games to inventory
+        //Add games to inventory
         inventory.addGame(mario);
         inventory.addGame(lemmings);
         inventory.addGame(zelda);

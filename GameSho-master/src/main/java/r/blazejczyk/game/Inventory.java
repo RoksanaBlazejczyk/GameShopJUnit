@@ -60,6 +60,7 @@ public class Inventory {
         return false;
     }
 
+
     public void listAllGames() {
         System.out.println("Inventory:");
         if (games.isEmpty()) {

@@ -5,6 +5,12 @@ import java.util.Date;
 public class Purchase extends Transaction {
     private boolean discountApplied;
 
+    /**
+     *
+     * @param transactionID
+     * @param date
+     * @param discountApplied
+     */
     public Purchase(int transactionID, Date date, boolean discountApplied) {
         super(transactionID, "Purchase", date);
         this.discountApplied = discountApplied;

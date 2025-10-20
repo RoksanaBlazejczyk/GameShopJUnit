@@ -9,6 +9,11 @@ public class Discount {
         this.isApplied = false;
     }
 
+    /**
+     *
+     * @param amount
+     * @return
+     */
     public double applyDiscount(double amount) {
         if (!isApplied) {
             isApplied = true;
@@ -21,7 +26,13 @@ public class Discount {
     public boolean isApplied() { return isApplied; }
     public void markAsUsed(boolean used) { this.isApplied = used; }
 
-    //Always return formatted string with 2 decimals
+    /**
+     *
+     * @param amount
+     * @return
+     *  return formatted string with 2 decimals
+     */
+
     public String createDecimals(double amount) {
         double discounted = applyDiscount(amount);
         return String.format("£%.2f", discounted); // always shows two decimals

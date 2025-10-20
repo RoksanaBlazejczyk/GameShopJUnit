@@ -9,6 +9,12 @@ public abstract class Transaction {
     protected String type;
     protected Date date;
 
+    /**
+     *
+     * @param transactionID
+     * @param type
+     * @param date
+     */
     public Transaction(int transactionID, String type, Date date) {
         this.transactionID = transactionID;
         this.type = type;
