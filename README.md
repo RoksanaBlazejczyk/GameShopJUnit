@@ -17,13 +17,11 @@ Customer – to browse, buy, and trade in games.
 The program keeps track of all games in stock, logs transactions, applies discounts automatically, and saves reports to a file.
 Everything runs through a simple, menu-based console interface.
 
-✨ Main Features
 👩‍💼 Manager Options
 
 Add new games or restock existing ones
 
-View the current inventory<img width="1536" height="1024" alt="aaa" src="https://github.com/user-attachments/assets/2a727a7d-fb1e-44c9-b82e-fdcd6244ecaf" />
-
+View the current inventory
 
 Save an inventory report to a file
 
