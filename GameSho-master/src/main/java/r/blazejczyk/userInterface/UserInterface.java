@@ -53,14 +53,16 @@ public class UserInterface {
                     Type buyGame = findGameByName(inventory, buyName);
 
                     if (buyGame != null) {
-                        double priceBefore = buyGame.getPrice();
-                        customer.purchase(buyGame, inventory);
-                        double pricePaid = buyGame.getPrice();
-                        System.out.printf("%s purchased %s on %s | Price: £%.2f\n",
-                                customer.getName(),
-                                buyGame.getName(),
-                                new Date(),
-                                pricePaid);
+                        //Purchase returns the final price after discount
+                        double pricePaid = customer.purchase(buyGame, inventory);
+
+                        if (pricePaid > 0) {
+                            System.out.printf("%s purchased %s on %s | Price: £%.2f\n",
+                                    customer.getName(),
+                                    buyGame.getName(),
+                                    new Date(),
+                                    pricePaid);
+                        }
                     } else {
                         System.out.println("Game not found!");
                     }

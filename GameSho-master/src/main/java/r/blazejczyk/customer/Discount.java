@@ -23,18 +23,6 @@ public class Discount {
         return amount;
     }
 
-    public boolean isApplied() { return isApplied; }
-    public void markAsUsed(boolean used) { this.isApplied = used; }
 
-    /**
-     *
-     * @param amount
-     * @return
-     *  return formatted string with 2 decimals
-     */
 
-    public String createDecimals(double amount) {
-        double discounted = applyDiscount(amount);
-        return String.format("£%.2f", discounted); // always shows two decimals
-    }
 }

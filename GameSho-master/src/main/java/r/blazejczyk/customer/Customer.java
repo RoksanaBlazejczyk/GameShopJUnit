@@ -5,6 +5,7 @@ import r.blazejczyk.game.Inventory;
 import r.blazejczyk.game.Type;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Customer {
@@ -31,10 +32,10 @@ public class Customer {
     public void makeTransaction(Transaction transaction, Inventory inventory, Type game) {
         if (transaction instanceof TradeIn) {
             tradeIn(game, inventory);
-            transactionHistory.add("TradeIn transaction ID: " + transaction.getTransactionID());
+            //transactionHistory.add("TradeIn transaction ID: " + transaction.getTransactionID());
         } else if (transaction instanceof Purchase) {
             purchase(game, inventory);
-            transactionHistory.add("Purchase transaction ID: " + transaction.getTransactionID());
+          //  transactionHistory.add("Purchase transaction ID: " + transaction.getTransactionID());
         }
     }
 
@@ -69,27 +70,39 @@ public class Customer {
      * @param inventory
      * //Purchase 1 copy
      */
-
-    public void purchase(Game game, Inventory inventory) {
+    public double purchase(Game game, Inventory inventory) {
         if (game.getQuantity() <= 0) {
             System.out.println("Sorry, " + game.getName() + " is out of stock.");
-            return;
+            return 0;
         }
 
         boolean removed = inventory.removeGame(game, 1);
-        if (!removed) return;
+        if (!removed) return 0;
 
-        String record = "Purchase: " + game.getName();
+        double finalPrice = game.getPrice();
+        boolean discountApplied = false;
+
+        //Apply discount if eligible
         if (discountEligible) {
-            double discountedPrice = Math.round(game.getPrice() * 0.9 * 100.0) / 100.0;
-
-            record += " (10% discount)";
-            discountEligible = false;
-        } else {
-
+            Discount discount = new Discount(10); //10% discount
+            finalPrice = discount.applyDiscount(finalPrice);
+            discountApplied = true;
+            discountEligible = false; //mark as used
         }
 
+        //Create a Purchase transaction with discount info
+        int transactionID = transactionHistory.size() + 1; // simple ID
+        Purchase purchaseTransaction = new Purchase(transactionID, new Date(), discountApplied);
+        purchaseTransaction.processTransaction(); // optional: print processing info
+
+        //Add record to history
+        String record = "Purchase: " + game.getName();
+        if (discountApplied) {
+            record += String.format(" (10%% discount applied, £%.2f)", finalPrice);
+        }
         transactionHistory.add(record);
+
+        return finalPrice;
     }
 
     //Getters
