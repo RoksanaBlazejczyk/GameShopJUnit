@@ -86,7 +86,7 @@ public class Customer {
             record += " (10% discount)";
             discountEligible = false;
         } else {
-            System.out.println("\n"+name + " purchased " + game.getName() + " (£" + game.getPrice() + ")");
+            //System.out.println("\n"+name + " purchased " + game.getName() + " (£" + game.getPrice() + ")");
         }
 
         transactionHistory.add(record);
