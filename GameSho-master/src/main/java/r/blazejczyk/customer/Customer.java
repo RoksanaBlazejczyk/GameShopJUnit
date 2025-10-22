@@ -82,11 +82,11 @@ public class Customer {
         String record = "Purchase: " + game.getName();
         if (discountEligible) {
             double discountedPrice = Math.round(game.getPrice() * 0.9 * 100.0) / 100.0;
-            System.out.println("\n"+name + " purchased " + game.getName() + " with 10% discount (£" + discountedPrice + ")");
+
             record += " (10% discount)";
             discountEligible = false;
         } else {
-            //System.out.println("\n"+name + " purchased " + game.getName() + " (£" + game.getPrice() + ")");
+
         }
 
         transactionHistory.add(record);
